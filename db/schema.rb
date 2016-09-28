@@ -20,11 +20,13 @@ ActiveRecord::Schema.define(version: 20160927154051) do
 
   create_table "boards", force: :cascade do |t|
     t.string  "name"
+    t.string  "description"
     t.integer "user_id"
   end
 
   create_table "images", force: :cascade do |t|
     t.string  "name"
+    t.string  "description"
     t.integer "user_id"
   end
 
