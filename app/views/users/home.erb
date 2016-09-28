@@ -1,0 +1,20 @@
+Welcome to your home page where you can:
+-view your already created boards
+-create a new board
+-have a link to see your images 
+
+<br></br>
+<h2><%= @user.username %></h2>
+
+<a href="/boards/new"><p>Create a board </p></a>
+
+<br></br>
+<p>Boards</p>
+
+<% @user.boards.each do |board| %>
+<%= board.name %>
+<%= board.description %>
+<% end %>
+
+
+
