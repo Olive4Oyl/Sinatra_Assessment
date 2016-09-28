@@ -40,12 +40,20 @@ class BoardsController < UsersController
 	end
 
 	post '/boards/:id/edit' do 
-			@board = Board.find_by(params[:id])
-			@board.update(params[:board])
-			@board.save
-			redirect to "/boards/#{@board.id}"
+		@board = Board.find_by(params[:id])
+		@board.update(params[:board])
+		@board.save
+		redirect to "/boards/#{@board.id}"
 	end
 
+	get '/boards/:id/delete' do 
+		@board = Board.find_by(params[:id])
+		if logged_in? && current_user.id == @board.user_id
+			@board.destroy
+			@user = current_user
+			redirect to "/users/#{@user.slug}"
+		end
+	end
 
 
 	# get '/boards/:slug' do 

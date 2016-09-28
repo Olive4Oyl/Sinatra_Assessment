@@ -1,9 +1,13 @@
-Welcome to your home page where you can:
--view your already created boards
--create a new board
--have a link to see your images 
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<!-- Welcome to your home page where you can:
+-view your already created boards (DONE)
+-create a new board (DONE)
+-create new images
+-have a link to see your images  -->
 
-<br></br>
 <h2><%= @user.username %></h2>
 
 <a href="/boards/new"><p>Create a board </p></a>
@@ -12,9 +16,9 @@ Welcome to your home page where you can:
 <p>Boards</p>
 
 <% @user.boards.each do |board| %>
-<%= board.name %>
-<%= board.description %>
+<a href="/boards/<%= board.id %>"><%= board.name %></a><br></br>
 <% end %>
 
-
-
+<a href="/logout"><p>Logout</p></a>
+</body>
+</html>

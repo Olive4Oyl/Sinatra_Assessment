@@ -2,7 +2,14 @@
 <p><%= @board.description %></p>
 
 <a href="/boards/<%=@board.id%>/edit"><p>Edit</p></a>
-<br></br>
+<!-- <form method="POST" action="/boards/<%=@board.id%>/edit">
+<button type="submit" value="edit">Edit</button>
+</form> -->
+
+<a href="/boards/<%=@board.id%>/delete"><p>Delete</p>
+<!-- <form method="POST" action="/boards/<%=@board.id%>/delete">
+<button type="submit" value="delete">Delete</button>
+</form> -->
 <p>Add an Image</p>
 
 <a href="/users/<%= @user.slug %>"><p>Home</p></a>
