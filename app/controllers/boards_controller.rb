@@ -1,5 +1,5 @@
 require 'pry'
-class BoardsController < UsersController
+class BoardsController < ApplicationController
 
 	get '/boards' do
 		@boards = Board.all
@@ -23,9 +23,9 @@ class BoardsController < UsersController
 
 	get '/boards/:id' do 
 		@board = Board.find_by(id: params[:id])
-		@user = current_user
-		@board.user_id = @user.id
-		@board.save
+		 @user = current_user
+		# @board.user_id = @user.id
+		# @board.save
 		erb :'/boards/show'
 	end
 
@@ -42,11 +42,11 @@ class BoardsController < UsersController
 	post '/boards/:id/edit' do 
 		@board = Board.find_by(params[:id])
 		@board.update(params[:board])
-		@board.save
 		redirect to "/boards/#{@board.id}"
 	end
 
 	get '/boards/:id/delete' do 
+		binding.pry
 		@board = Board.find_by(params[:id])
 		if logged_in? && current_user.id == @board.user_id
 			@board.destroy

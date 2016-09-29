@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927154051) do
+ActiveRecord::Schema.define(version: 20160929151125) do
 
   create_table "board_images", force: :cascade do |t|
     t.integer "board_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160927154051) do
     t.string  "name"
     t.string  "description"
     t.integer "user_id"
+    t.string  "filename"
   end
 
   create_table "users", force: :cascade do |t|

@@ -20,5 +20,9 @@
 <% end %>
 
 <a href="/logout"><p>Logout</p></a>
+
+<%@user.images.each do |image|%>
+	<a href="/images/<%=image.id%>"><img src="../image/<%=image.filename%>"></a>
+	<% end %>
 </body>
 </html>

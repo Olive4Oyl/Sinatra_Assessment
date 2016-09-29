@@ -1,5 +1,7 @@
 require './config/environment'
 require 'pry'
+# require 'carrierwave'
+# require 'carrierwave/orm/activerecord'
 
 class ApplicationController < Sinatra::Base
   configure do

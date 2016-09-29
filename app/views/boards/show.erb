@@ -6,11 +6,11 @@
 <button type="submit" value="edit">Edit</button>
 </form> -->
 
-<a href="/boards/<%=@board.id%>/delete"><p>Delete</p>
+<p><a href="/boards/<%=@board.id%>/delete">Delete</a></p>
 <!-- <form method="POST" action="/boards/<%=@board.id%>/delete">
 <button type="submit" value="delete">Delete</button>
 </form> -->
-<p>Add an Image</p>
+<p><a href="/images/new">Add an Image</a></p>
 
 <a href="/users/<%= @user.slug %>"><p>Home</p></a>
 
