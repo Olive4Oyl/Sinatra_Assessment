@@ -1,0 +1,14 @@
+<img src="../image/<%=@image.filename%>">
+
+<br></br>
+<%= @image.image_name %>
+<br></br>
+
+<%= @image.description %>
+
+<a href="/images/<%=@image.id%>/edit"><p>Edit</p></a>
+
+<p><a href="/images/<%=@image.id%>/delete">Delete</a></p>
+
+<a href="/users/<%= @user.slug %>"><p>Home</p></a>
+

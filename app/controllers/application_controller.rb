@@ -1,12 +1,11 @@
 require './config/environment'
 require 'pry'
-# require 'carrierwave'
-# require 'carrierwave/orm/activerecord'
+
 
 class ApplicationController < Sinatra::Base
   configure do
   	enable :sessions
-	set :session_secret, "secret"
+	set :session_secret, "my_application_secret"
     set :public_folder, 'public'
     set :views, 'app/views'
   end
@@ -22,7 +21,7 @@ helpers do
     end
 
     def current_user
-       User.find_by(session[:id])
+       User.find_by(id: session[:id])
     end
 
  end

@@ -10,19 +10,36 @@
 
 <h1 class="name"><%= @user.username %></h1>
 
-<a href="/boards/new"><p>Create a board </p></a>
+<a href="/boards/new"><p>Create a board</p></a>
+<a href="/images/new"><p>Upload an image</p></a>
 
 <br></br>
 <p>Boards</p>
 
 <% @user.boards.each do |board| %>
-<a href="/boards/<%= board.id %>"><%= board.name %></a><br></br>
+<a href="/boards/<%= board.id %>"><%= board.name %></a>
 <% end %>
+<br></br>
+
+<% @user.boards.each do |board| %>
+	<%board.images.each do |image| %>
+		<%= image.image_name %> 
+		<img src="../image/<%=image.filename%>">
+		<br></br>
+		<% end %>
+<% end %>
+
+<p>Uploaded images</p>
+<%@user.images.each do |image|%>
+	<a href="/images/<%=image.id%>"><img src="../image/<%=image.filename%>"></a>
+	<br></br>
+	<%= image.image_name %>
+	<br></br>
+	<%= image.description %>
+	<br></br>
+<% end %> 
 
 <a href="/logout"><p>Logout</p></a>
 
-<%@user.images.each do |image|%>
-	<a href="/images/<%=image.id%>"><img src="../image/<%=image.filename%>"></a>
-	<% end %>
 </body>
 </html>

@@ -8,8 +8,5 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
-# CarrierWave.configure do |config|
-#   config.root = "#{Dir.pwd}/public/" 
-# end
 
 require_all 'app'

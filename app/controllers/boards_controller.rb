@@ -1,20 +1,21 @@
 require 'pry'
 class BoardsController < ApplicationController
 
-	get '/boards' do
-		@boards = Board.all
-		erb :'/boards/index'
-	end 
+	# get '/boards' do
+	# 	@boards = Board.all
+	# 	erb :'/boards/index'
+	# end 
 
 	get '/boards/new' do 
-		if !logged_in?
+		if logged_in? && current_user.id == @board.user_id
+			erb :'/boards/new'
+		else 
 			redirect to "/login"
 		end
-		erb :'/boards/new'
 	end
 
 	post '/boards/new' do 
-		@user = User.find_by(session[:id])
+		@user = User.find_by(id: session[:id])
 		@board = Board.create(params[:board])
 		@board.user_id = @user.id
 		@board.save
@@ -22,17 +23,19 @@ class BoardsController < ApplicationController
 	end
 
 	get '/boards/:id' do 
-		@board = Board.find_by(id: params[:id])
-		 @user = current_user
-		# @board.user_id = @user.id
-		# @board.save
-		erb :'/boards/show'
+		if logged_in?
+			@board = Board.find_by(id: params[:id])
+			@user = current_user
+			erb :'/boards/show'
+		else 
+			redirect to "/login"
+		end
 	end
 
 	get '/boards/:id/edit' do 
-		@user = current_user
-		if logged_in?
-			@board = Board.find_by(id: params[:id])
+		@board = Board.find_by(id: params[:id])
+		if logged_in? && current_user.id == @board.user_id
+			@user = current_user
 			erb :'/boards/edit'
 		else
 			redirect to "/login"
@@ -40,26 +43,44 @@ class BoardsController < ApplicationController
 	end
 
 	post '/boards/:id/edit' do 
-		@board = Board.find_by(params[:id])
+		@board = Board.find_by(id: params[:id])
 		@board.update(params[:board])
 		redirect to "/boards/#{@board.id}"
 	end
 
+	get '/boards/:id/image' do
+		@board = Board.find_by(id: params[:id])
+		if logged_in? && current_user.id == @board.user_id
+			erb :'/boards/board_image_new'
+		else 
+			redirect to "/login"
+		end
+	end
+
+	post '/boards/:id/image' do 
+		@board = Board.find_by(id: params[:id])
+		@image = Image.new(filename: params[:image][:filename], image_name: params[:image][:image_name], description: params[:image][:description])
+		@user = current_user
+		@board.save
+		@board.images << @image
+		File.open("./public/image/#{@image.filename}", 'w') do |f|
+        	f.write(params[:image][:tempfile].read)
+        	redirect to "/boards/#{@board.id}"
+        end
+	end
+
+
 	get '/boards/:id/delete' do 
-		binding.pry
-		@board = Board.find_by(params[:id])
+		@board = Board.find_by(id: params[:id])
 		if logged_in? && current_user.id == @board.user_id
 			@board.destroy
 			@user = current_user
 			redirect to "/users/#{@user.slug}"
+		else 
+			redirect to "/login"
 		end
 	end
 
-
-	# get '/boards/:slug' do 
-	# 	@user = Board.find_by_slug(params[:slug])
-
-	# end
 
 
 
