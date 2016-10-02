@@ -3,6 +3,14 @@ Edit for Image information here
 <form method="POST" action="/images/<%=@image.id%>/edit">
 <p>Name <input type="text" name="image[image_name]" placeholder="Update the name" required></p>
 <p>Description <input type="text" name="image[description]" placeholder="Update the description" required></p>
+
+
+<p> Add to an existing board </p>
+<%Board.all.each do |board|%>
+    <input type="checkbox" name="image[board_ids][]" value="<%=board.id%>" id="<%=board.id%>"><%=board.name%></input>
+<%end%>
+
 <p><button type="submit" value="submit">Update</button></p>
 </form>
+
 

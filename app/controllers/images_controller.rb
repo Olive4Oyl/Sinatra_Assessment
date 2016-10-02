@@ -7,7 +7,7 @@ class ImagesController < UsersController
 	# end 
 
 	get '/images/new' do 
-		if logged_in? && current_user.id == @board.user_id
+		if logged_in? 
 			erb :'/images/new'
 		else 
 			redirect to "/login"
@@ -15,7 +15,7 @@ class ImagesController < UsersController
 	end 
 
 	post '/images/new' do 
-		@image = Image.new(filename: params[:image][:filename], image_name: params[:image][:image_name], description: params[:image][:description])
+		@image = Image.new(filename: params[:image][:filename], image_name: params[:image][:image_name], description: params[:image][:description])	      	
 		@user = current_user
       	@image.user_id = @user.id
       	@image.save
@@ -38,7 +38,7 @@ class ImagesController < UsersController
 
 	get '/images/:id/edit' do
 		@image = Image.find_by(id: params[:id])
-		if logged_in? && current_user.id == @board.user_id
+		if logged_in? && current_user.id == @image.user_id
 			@user = current_user
 			erb :'/images/edit'
 		else

@@ -26,7 +26,6 @@ class UsersController < ApplicationController
 
 	get '/login' do 
 		if logged_in?
-			# redirect to "/users/home"
 			@user = current_user
 			redirect to "/users/#{@user.slug}"
 		end
@@ -37,7 +36,6 @@ class UsersController < ApplicationController
 		@user = User.find_by(:username => params[:username])
 		if @user && @user.authenticate(params[:password])
 			session[:id] = @user.id
-			# redirect to "/users/home"
 			redirect to "/users/#{@user.slug}"
 		else 
 			redirect to "/signup"
@@ -49,11 +47,6 @@ class UsersController < ApplicationController
 		erb :'/users/home'
 	end
 
-	# get '/users/home' do
-	# 	@user = User.find_by(session[:id]) 
-	# 	erb :'/users/home'
-	# end
-
 	get '/logout' do 
   	if logged_in?
   		session.clear
@@ -62,9 +55,5 @@ class UsersController < ApplicationController
   		redirect to "/"
   	end
   end
-
-
-
-
 
 end

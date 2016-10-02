@@ -1,9 +1,13 @@
 <p><%= @board.name %></p>
 <p><%= @board.description %></p>
 <p><% @board.images.each do |image| %>
-<a href="/images/<%=image.id%>"><img src="../image/<%=image.filename%>"></a>
+<img src="../image/<%=image.filename%>">
 <br></br>
 <%= image.image_name %>
+<!-- <a href="/boards/image/<%=image.id%>/delete"><p>Delete</p></a> -->
+<form method="POST" action="/images/<%=image.id%>/delete">
+<button type="submit" value="delete">Delete</button>
+</form>
 <br></br>
 <% end %>
 

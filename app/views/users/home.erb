@@ -15,16 +15,19 @@
 
 <br></br>
 <p>Boards</p>
-
 <% @user.boards.each do |board| %>
 <a href="/boards/<%= board.id %>"><%= board.name %></a>
+<br></br>
 <% end %>
 <br></br>
 
+<p>All board images</p>
 <% @user.boards.each do |board| %>
 	<%board.images.each do |image| %>
 		<%= image.image_name %> 
+		<br></br>
 		<img src="../image/<%=image.filename%>">
+		<br></br>
 		<br></br>
 		<% end %>
 <% end %>
