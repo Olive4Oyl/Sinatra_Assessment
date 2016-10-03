@@ -1,30 +1,21 @@
-<p><%= @board.name %></p>
-<p><%= @board.description %></p>
+<p class="titles"><%= @board.name %></p>
+<p class="titles"><%= @board.description %></p>
+
+<div class="board_images">
 <p><% @board.images.each do |image| %>
-<img src="../image/<%=image.filename%>">
+<img class="image" src="../image/<%=image.filename%>">
 <br></br>
-<%= image.image_name %>
-<!-- <a href="/boards/image/<%=image.id%>/delete"><p>Delete</p></a> -->
-<form method="POST" action="/images/<%=image.id%>/delete">
-<button type="submit" value="delete">Delete</button>
-</form>
-<br></br>
-<% end %>
+<p class="image_name"> <%= image.image_name %> </p>
+<% end %> 
 
 
-<a href="/boards/<%=@board.id%>/edit"><p>Edit</p></a>
-<!-- <form method="POST" action="/boards/<%=@board.id%>/edit">
-<button type="submit" value="edit">Edit</button>
-</form> -->
+<a href="/boards/<%=@board.id%>/edit"><p>Edit</p></a> 
 
-<p><a href="/boards/<%=@board.id%>/delete">Delete</a></p>
-<!-- <form method="POST" action="/boards/<%=@board.id%>/delete">
-<button type="submit" value="delete">Delete</button>
-</form> -->
-<p><a href="/boards/<%=@board.id%>/image">Add an Image</a></p>
+<a href="/boards/<%=@board.id%>/image"><p>Add an Image</p></a>
+
+<a href="/boards/<%=@board.id%>/delete"><p>Delete</p></a>
 
 <a href="/users/<%= @user.slug %>"><p>Home</p></a>
 
-<!-- Gotta come back and add the images the images that are associated with this board
-@board.image -->
-<!-- <p>Home</p> -->
+
+

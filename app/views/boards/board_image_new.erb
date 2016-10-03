@@ -1,21 +1,9 @@
-<h2> Create a new image here </h2>
-
-
- <form method="POST" action="/boards/<%=@board.id%>/image"  enctype="multipart/form-data">
-    <input type="file" id="file" name="image"  aria-label="File browser example">
-   <p>Name <input type="text" name="image[image_name]" placeholder="name your image" required></p>
-   <p>Description <input type="text" name="image[description]" placeholder="describe the image" requied></p>
-   <p> 
-
-   
-
-   	<!-- Add to an existing board create or save to a new board -->
-
-
-    <button type="submit">Upload</button>
-  <!--  <p><button type="submit" value="submit">Create</button></p> -->
-
- 
-   <br></br>
-
-</form>
+<div class="login_signup">
+	<h1>Add Image</h1>
+		<form method="POST" action="/boards/<%=@board.id%>/image"  enctype="multipart/form-data">
+		<input type="file" id="file" name="image" aria-label="File browser example" class="input">
+		<p>Name <input type="text" name="image[image_name]" placeholder="Name the image" class="input" required></p>
+		<p>Description <input type="text" name="image[description]" placeholder="Describe the image" class="input" requied></p>
+   		<button type="submit" class="btn btn-primary btn-block btn-large">Create</button>
+	</form>
+</div>

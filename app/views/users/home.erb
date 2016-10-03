@@ -1,48 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
-<!-- Welcome to your home page where you can:
--view your already created boards (DONE)
--create a new board (DONE)
--create new images
--have a link to see your images  -->
-
 <h1 class="name"><%= @user.username %></h1>
+	<a class="create" href="/logout"><p>Logout</p></a> 
+	<a class="create" href="/boards/new"><p>Create a board</p></a>
+	<a class="create" href="/images/new"><p>Upload an image</p></a>
 
-<a href="/boards/new"><p>Create a board</p></a>
-<a href="/images/new"><p>Upload an image</p></a>
+<p class="titles">Boards</p>
 
-<br></br>
-<p>Boards</p>
 <% @user.boards.each do |board| %>
-<a href="/boards/<%= board.id %>"><%= board.name %></a>
-<br></br>
-<% end %>
-<br></br>
+  <li><a href="/boards/<%= board.id %>"><%= board.name %></a></li>
+ <% end %>
+ <br></br>
 
-<p>All board images</p>
-<% @user.boards.each do |board| %>
+
+<p class="titles">All Board Images</p>
+
+	<% @user.boards.each do |board| %>
 	<%board.images.each do |image| %>
-		<%= image.image_name %> 
-		<br></br>
-		<img src="../image/<%=image.filename%>">
-		<br></br>
-		<br></br>
-		<% end %>
-<% end %>
+		
+			<li>
+				<%= image.image_name %> </p>
+				<br></br>
+				<img class="image" src="../image/<%=image.filename%>">
+				<br></br>
+				<br></br>
+			</li>
 
-<p>Uploaded images</p>
-<%@user.images.each do |image|%>
-	<a href="/images/<%=image.id%>"><img src="../image/<%=image.filename%>"></a>
-	<br></br>
-	<%= image.image_name %>
-	<br></br>
-	<%= image.description %>
+		<% end %>
+	<% end %>
+
+<br></br>
+
+	<p class="titles">Uploaded images</p>
+	<%@user.images.each do |image|%>
+	<a href="/images/<%=image.id%>"><img class="image" src="../image/<%=image.filename%>"></a>
+	<p class="image_name"> <%= image.image_name %> </p>
+	<p class="image_name"> <%= image.description %> </p>
 	<br></br>
 <% end %> 
 
-<a href="/logout"><p>Logout</p></a>
 
-</body>
-</html>
+
+
+

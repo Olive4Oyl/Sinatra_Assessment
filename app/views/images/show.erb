@@ -1,10 +1,12 @@
-<img src="../image/<%=@image.filename%>">
+<div class="board_images_grid">
+<img class="image" src="../image/<%=@image.filename%>">
+
+<p class="image_name"><%= @image.image_name %></p>
+
+<p class="image_name"><%= @image.description %></p>
+</div>
 
 <br></br>
-<%= @image.image_name %>
-<br></br>
-
-<%= @image.description %>
 
 <a href="/images/<%=@image.id%>/edit"><p>Edit</p></a>
 

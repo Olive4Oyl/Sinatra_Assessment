@@ -1,11 +1,9 @@
-<h2> Create a new board here </h2>
+<div class="login_signup">
+	<h1>Create Board</h1>
+	<form method="POST" action="/boards/new">
+		<p>Name <input type="text" name="board[name]" placeholder="Examples: 'Sites to visit' " class="input"></p>
+		<p>Description <input type="text" name="board[description]" placeholder="What's your board about?" class="input"></p>
+		<button type="submit" class="btn btn-primary btn-block btn-large">Create</button>
+	</form>
+</div>
 
-<form method="POST" action="/boards/new">
-<p>Name <input type="text" name="board[name]" placeholder="Examples: 'Sites to visit' or 'New Tech'"></p>
-<p>Description <input type="text" name="board[description]" placeholder="What's your board about?"></p>
-
-
-<p><button type="submit" value="submit">Create</button></p>
-
-
-</form>
