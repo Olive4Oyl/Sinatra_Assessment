@@ -1,41 +1,60 @@
 <h1 class="name"><%= @user.username %></h1>
-	<a class="create" href="/logout"><p>Logout</p></a> 
-	<a class="create" href="/boards/new"><p>Create a board</p></a>
-	<a class="create" href="/images/new"><p>Upload an image</p></a>
 
-<p class="titles">Boards</p>
+<div class="list-group">
+	<h4><a href="/logout" class="col-sm-4 list-group-item">Logout</a></h4>
+	<h4><a href="/boards/new" class="col-sm-4 list-group-item">Create a board</a></h4>
+	<h4><a href="/images/new" class="col-sm-4 list-group-item">Upload an image</a></h4>
+</div>
 
-<% @user.boards.each do |board| %>
-  <li><a href="/boards/<%= board.id %>"><%= board.name %></a></li>
+<br>
+<br>
+<br>
+
+<div class="panel panel-info">
+ <div class="panel-heading">
+   <h2 class="panel-title">Boards</h2>
+ </div>
+ <div class="panel-body">
+   <% @user.boards.each do |board| %>
+  <h4><li><a href="/boards/<%= board.id %>"><%= board.name %></a></li></h4>
  <% end %>
  <br></br>
+ </div>
+</div>
 
+<br>
 
-<p class="titles">All Board Images</p>
-
-	<% @user.boards.each do |board| %>
-	<%board.images.each do |image| %>
-		
-			<li>
-				<%= image.image_name %> </p>
-				<br></br>
-				<img class="image" src="../image/<%=image.filename%>">
-				<br></br>
-				<br></br>
-			</li>
-
+<div class="panel panel-success">
+ <div class="panel-heading">
+   <h2 class="panel-title">All Board Images</h2>
+ </div>
+ <div class="panel-body">
+   <% @user.boards.each do |board| %>
+		<%board.images.each do |image| %>
+				<h4><%= image.image_name %> </h4>
+				<img class="col-sm-6" src="../image/<%=image.filename%>">
 		<% end %>
 	<% end %>
+ </div>
+</div>
 
-<br></br>
+<br>
 
-	<p class="titles">Uploaded images</p>
-	<%@user.images.each do |image|%>
-	<a href="/images/<%=image.id%>"><img class="image" src="../image/<%=image.filename%>"></a>
-	<p class="image_name"> <%= image.image_name %> </p>
-	<p class="image_name"> <%= image.description %> </p>
-	<br></br>
+<div class="panel panel-danger">
+ <div class="panel-heading">
+   <h1 class="panel-title">Uploaded images</h1>
+ </div>
+ <div class="panel-body">
+   <h4><%@user.images.each do |image|%></h4>
+	<a href="/images/<%=image.id%>"><img class="col-sm-6" src="../image/<%=image.filename%>"></a>
+	<h3 class="image_name"> <%= image.image_name %> </h3>
+	<h3 class="image_name"> <%= image.description %> </h3>
 <% end %> 
+ </div>
+</div>
+
+	
+	
 
 
 

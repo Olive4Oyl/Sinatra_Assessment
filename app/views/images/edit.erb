@@ -1,17 +1,37 @@
-<div class="login_signup">
-	<h1>Edit Image</h1>
+<form method="POST" action="/images/<%=@image.id%>/edit" class="form-horizontal" >
+ <fieldset>
+   <legend>Edit Image</legend>
+    <div class="form-group">
+     <label class="col-sm-4 control-label">Name</label>
+     <div class="col-sm-5">
+       <input type="text" class="form-control" name="image[image_name]"  value="<%=@image.image_name%>" autocomplete="off" required>
+     </div>
+   </div>
 
-	<form method="POST" action="/images/<%=@image.id%>/edit">
-		<input type="text" name="image[image_name]" placeholder="Update the name" class="input" required>
-		<input type="text" name="image[description]" placeholder="Update the description" class="input" required>
-		<p> Add to Existing Boards </p>
-		<br></br>
-			<%Board.all.each do |board|%>
-	    <input type="checkbox" name="image[board_ids][]" value="<%=board.id%>" id="<%=board.id%>" class="check_box"><%=board.name%></input>
-		<%end%>
-		<br></br>
+   <div class="form-group">
+     <label class="col-sm-4 control-label">Description</label>
+     <div class="col-sm-5">
+       <input type="text" class="form-control" name="image[description]" value="<%=@image.description%>" autocomplete="off" required>
+       </div>
+     </div>
+
+   <div class="form-group">
+     <label class="col-sm-4 control-label">Add to Existing Boards</label>
+     <div class="col-sm-5">
+       <div class="checkbox">
+         <label>
+            <%@user.boards.all.each do |board|%>
+               <input type="checkbox" name="image[board_ids][]" value="<%=board.id%>" id="<%=board.id%>" ><%=board.name%>
+                 <%end%>
+                 <br>
+                 <br>
 			<button type="submit" class="btn btn-primary btn-block btn-large">Update</button>
-	</form>
-</div>
+         </label>
+       </div>
+     </div>
+   </div>
+
+ </fieldset>
+</form>
 
 

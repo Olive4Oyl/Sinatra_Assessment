@@ -1,25 +1,42 @@
-<p class="titles"><%= @board.name %></p>
-<p class="titles"><%= @board.description %></p>
-
-<div class="board_images">
-<p><% @board.images.each do |image| %>
-<img class="image" src="../image/<%=image.filename%>">
-<br></br>
-<p class="image_name"> <%= image.image_name %> </p>
+<div class="panel panel-info">
+ <div class="panel-heading">
+   <h1 class="panel-title"><%= @board.name %></h1>
+    <br>
+   <h1 class="panel-title"><%= @board.description %></h1>
+ </div>
+ <div class="panel-body">
+   <div class="board_images">
+	<% @board.images.each do |image| %>
+		<img src="../image/<%=image.filename%>">
+		<br>
+		<br>
+		<h3 class="image_name"> <%= image.image_name %> </h3>
 <form method="POST" action="/boards/<%=@board.id%>/image/edit">
 	<input type="hidden" name='image_id' value="<%=image.id%>">
-	<input type="submit" value="bye felicia">
+	<input type="submit" value="Delete Image" class="btn btn-danger">
+	<br>
+	<br>
+	<br>
 </form>
 <% end %> 
+<br>
+<br>
 
-
-<a href="/boards/<%=@board.id%>/edit"><p>Edit</p></a> 
+<!-- <a href="/boards/<%=@board.id%>/edit"><p>Edit</p></a> 
 
 <a href="/boards/<%=@board.id%>/image"><p>Add an Image</p></a>
 
 <a href="/boards/<%=@board.id%>/delete"><p>Delete</p></a>
 
-<a href="/users/<%= @user.slug %>"><p>Home</p></a>
+<a href="/users/<%= @user.slug %>"><p>Home</p></a> -->
+
+<a href="/boards/<%=@board.id%>/edit" class="btn btn-primary">Edit</a>&nbsp&nbsp&nbsp
+<a href="/boards/<%=@board.id%>/image" class="btn btn-primary">Add an Image</a>&nbsp&nbsp&nbsp
+<a href="/boards/<%=@board.id%>/delete" class="btn btn-danger">Delete Board</a>&nbsp&nbsp&nbsp
+<a href="/users/<%= @user.slug %>" class="btn btn-default">Home</a>&nbsp&nbsp&nbsp
+ </div>
+</div>
+
 
 
 

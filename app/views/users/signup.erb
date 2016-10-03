@@ -1,9 +1,27 @@
-<div class="login_signup">
-	<h1>Signup</h1>
-	<form method="POST" action="/signup">
-		<input type="text" name="username" placeholder="Username" autocomplete="off" class="input" required />
-		<input type="text" name="email" placeholder="Email" autocomplete="off" class="input" required />
-		<input type="password" name="password" placeholder="Password" autocomplete="off" class="input" required />
-		<button type="submit" class="btn btn-primary btn-block btn-large">Sign In</button>
-	</form>
-</div>
+<form class="form-horizontal" method="POST" action="/signup">
+ <fieldset>
+   <legend>Sign Up</legend>
+   <div class="form-group">
+     <label class="col-sm-4 control-label">Username</label>
+     <div class="col-sm-5">
+       <input type="text" class="form-control" name="username" placeholder="Username" autocomplete="off" required>
+     </div>
+   </div>
+    <div class="form-group">
+     <label class="col-sm-4 control-label">Email</label>
+     <div class="col-sm-5">
+       <input type="email" class="form-control" name="email" placeholder="Email" autocomplete="off" required>
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="col-sm-4 control-label">Password</label>
+     <div class="col-sm-5">
+       <input type="password" class="form-control" name="password" placeholder="Password" autocomplete="off" required>
+       		<br>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="reset" class="btn btn-default">Cancel</button>
+       </div>
+     </div>
+   </div>
+ </fieldset>
+</form>

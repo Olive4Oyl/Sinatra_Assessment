@@ -1,18 +1,20 @@
-<div class="board_images_grid">
-<img class="image" src="../image/<%=@image.filename%>">
+<div class="panel panel-danger">
+ <div class="panel-heading">
+   <h1 class="panel-title"><%= @image.image_name %></h1>
+   <br>
+   <h1 class="panel-title"><%= @image.description %></h1>
+ </div>
+ <div class="panel-body">
+	<img class="col-sm-4" src="../image/<%=@image.filename%>">
+ </div>
 
-<p class="image_name"><%= @image.image_name %></p>
-
-<p class="image_name"><%= @image.description %></p>
+ <a href="/images/<%=@image.id%>/edit" class="btn btn-primary">Edit</a>&nbsp&nbsp&nbsp
+<a href="/images/<%=@image.id%>/delete" class="btn btn-danger">Delete</a>&nbsp&nbsp&nbsp
+<a href="/users/<%= @user.slug %>" class="btn btn-default">Home</a>&nbsp&nbsp&nbsp
+ <br>
+ <br>
 </div>
 
-<br></br>
 
-<a href="/images/<%=@image.id%>/edit"><p>Edit</p></a>
 
-<a href="/images/<%=@image.id%>/edit">Add to an existing board</p></a>
-
-<p><a href="/images/<%=@image.id%>/delete">Delete</a></p>
-
-<a href="/users/<%= @user.slug %>"><p>Home</p></a>
 
