@@ -6,6 +6,10 @@
 <img class="image" src="../image/<%=image.filename%>">
 <br></br>
 <p class="image_name"> <%= image.image_name %> </p>
+<form method="POST" action="/boards/<%=@board.id%>/image/edit">
+	<input type="hidden" name='image_id' value="<%=image.id%>">
+	<input type="submit" value="bye felicia">
+</form>
 <% end %> 
 
 

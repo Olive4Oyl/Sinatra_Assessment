@@ -60,6 +60,7 @@ class BoardsController < ApplicationController
 	post '/boards/:id/image' do 
 		@board = Board.find_by(id: params[:id])
 		@image = Image.new(filename: params[:image][:filename], image_name: params[:image][:image_name], description: params[:image][:description])
+		# @board.images.build(filename: params[:image][:filename], image_name: params[:image][:image_name], description: params[:image][:description])
 		@image.board_ids << @board.id
 		@board.images << @image
 		@user = current_user
@@ -112,6 +113,12 @@ class BoardsController < ApplicationController
 	# 	# end
 	# end
 
+	post '/boards/:id/image/edit' do
+		@board = Board.find_by(id: params[:id])
+		@board.images.destroy(params[:image_id])
+		@board.save
+		redirect to "/boards/#{@board.id}"
+	end
 
 	# @board = Board.find_by(id: params[:id])
 	# 	@image = Image.new(filename: params[:image][:filename], image_name: params[:image][:image_name], description: params[:image][:description])
