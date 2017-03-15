@@ -46,11 +46,13 @@
  </div>
  <div class="panel-body">
    <h4><%@user.images.each do |image|%></h4>
-	<a href="/images/<%=image.id%>"><img class="col-sm-6" src="../image/<%=image.filename%>"></a>
+   		<br>
+		<br>
+	<a href="/images/<%=image.id%>"><img src="../image/<%=image.filename%>"></a>
 	<h3 class="image_name"> <%= image.image_name %> </h3>
-	<h3 class="image_name"> <%= image.description %> </h3>
-<% end %> 
- </div>
+	<h4 class="image_name"> <%= image.description %> </h4>
+	<% end %> 
+</div>
 </div>
 
 	

@@ -1,10 +1,6 @@
 require 'pry'
 class ImagesController < UsersController
 
-	# get '/images' do 
-	# 	@images = Image.all
-	# 	erb :'/images/index'
-	# end 
 
 	get '/images/new' do 
 		if logged_in? 

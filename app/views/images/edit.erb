@@ -21,7 +21,7 @@
        <div class="checkbox">
          <label>
             <%@user.boards.all.each do |board|%>
-               <input type="checkbox" name="image[board_ids][]" value="<%=board.id%>" id="<%=board.id%>" ><%=board.name%>
+               <input type="checkbox" name="image[board_ids][]" value="<%=board.id%>" id="<%=board.id%>"> <%=board.name%> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                  <%end%>
                  <br>
                  <br>

@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 		if !logged_in? 
 			erb :'/users/signup'
 		else
-			# redirect to "/users/home"
 			@user = current_user
 			redirect to "/users/#{@user.slug}"
 		end
@@ -17,7 +16,6 @@ class UsersController < ApplicationController
 			@user = User.create(username: params[:username], email: params[:email], password: params[:password])
 			session[:id] = @user.id
 			@user.save
-			# redirect to "/users/home"
 			redirect to "/users/#{@user.slug}"
 		else
 			redirect to "/signup"
